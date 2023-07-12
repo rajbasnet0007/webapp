@@ -20,13 +20,17 @@ pipeline {
                 
                     }
             }
-            
+stage('Checkout') {
+      steps {
+        sh 'echo passed'
+        //git branch: 'main', url: 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
+      }
+    }
 
    stage('Build image') {
     steps{
     script{
-    sh '${WORKSPACE}'
-    sh 'cd ${WORKSPACE}/webapp/'    
+    sh 'ls'   
     dockerImage=docker.build(registry + ":$BUILD_NUMBER","-f Dockerfile .")
     sh "echo $docker_Image "
         }
