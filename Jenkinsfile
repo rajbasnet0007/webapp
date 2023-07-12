@@ -25,7 +25,9 @@ pipeline {
    stage('Build image') {
     steps{
     script{
-    sh 'cd webapp/'    
+    sh '${WORKSPACE}'
+    sh 'ls ${WORKSPACE}'
+    sh 'cd ${WORKSPACE}/webapp/'    
     dockerImage=docker.build(registry + ":$BUILD_NUMBER","-f Dockerfile .")
     sh "echo $docker_Image "
         }
